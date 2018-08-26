@@ -27,28 +27,28 @@
       {% endif %}
 
       {% comment %} Always show link to home page. {% endcomment %}
-      <a class="navbar-brand" href="{{ page.root }}{% link index.md %}">Home</a>
+      <a class="navbar-brand" href="{{ page.root }}{% link index.md %}">{{ include.language.index }}</a>
 
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
 
 	{% comment %} Always show code of conduct. {% endcomment %}
-        <li><a href="{{ page.root }}{% link CONDUCT.md %}">Code of Conduct</a></li>
+        <li><a href="{{ page.root }}{% link CONDUCT.md %}">{{ include.language.CoC }}</a></li>
 
         {% if site.kind == "lesson" %}
 	{% comment %} Show setup instructions. {% endcomment %}
-        <li><a href="{{ page.root }}{% link setup.md %}">Setup</a></li>
+        <li><a href="{{ page.root }}{% link setup.md %}">{{ include.language.setup }}</a></li>
 
         {% comment %} Show lesson episodes for lessons. {% endcomment %}
         <li class="dropdown">
-          <a href="{{ page.root }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Episodes <span class="caret"></span></a>
+          <a href="{{ page.root }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ include.language.episodes }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            {% for episode in site.episodes %}
-            <li><a href="{{ page.root }}{{ episode.url }}">{{ episode.title }}</a></li>
+            {% for episode in episodes %}
+            <li><a href="{{ episode.url }}">{{ episode.title }}</a></li><!-- NOTE: Check whether this works on github where root is different than localhost; also for extras and others. -->
             {% endfor %}
 	    <li role="separator" class="divider"></li>
-            <li><a href="{{ page.root }}{% link aio.md %}">All in one page (Beta)</a></li>
+            <li><a href="{{ page.root }}{% link aio.md %}">{{ include.language.aio }} (Beta)</a></li>
           </ul>
         </li>
 	{% endif %}
@@ -56,29 +56,77 @@
 	{% comment %} Show extras for lessons or if this is the main workshop-template repo (where they contain documentation). {% endcomment %}
 	{% if site.kind == "lesson" %}
         <li class="dropdown">
-          <a href="{{ page.root }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Extras <span class="caret"></span></a>
+          <a href="{{ page.root }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ include.language.extras }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{{ page.root }}{% link reference.md %}">Reference</a></li>
-            {% for extra in site.extras %}
-            <li><a href="{{ page.root }}{{ extra.url }}">{{ extra.title }}</a></li>
+            <li><a href="{{ page.root }}{% link reference.md %}">{{ include.language.reference }}</a></li>
+            {% for extra in extras %}
+            <li><a href="{{ extra.url }}">{{ extra.title }}</a></li>
             {% endfor %}
           </ul>
         </li>
 	{% endif %}
 
 	{% comment %} Always show license. {% endcomment %}
-        <li><a href="{{ page.root }}{% link LICENSE.md %}">License</a></li>
+        <li><a href="{{ page.root }}{% link LICENSE.md %}">{{ include.language.LICENSE }}</a></li>
 	{% if page.source %}
 	{% if page.source == "Rmd" %}
-	<li><a href="{{site.github.repository_url}}/edit/gh-pages/{{page.path|replace: "_episodes", "_episodes_rmd" | replace: ".md", ".Rmd"}}">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	<li><a href="{{site.github.repository_url}}/edit/gh-pages/{{page.path|replace: "_episodes", "_episodes_rmd" | replace: ".md", ".Rmd"}}">{{ include.language.improve }}<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
 	{% endif %}
 	{% else %}
-	<li><a href="{{site.github.repository_url}}/edit/gh-pages/{{page.path}}">Improve this page <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
+	<li><a href="{{site.github.repository_url}}/edit/gh-pages/{{page.path}}">{{ include.language.improve }}<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a></li>
 	{% endif %}
+
+  {% comment %} Adding languages if they exists {% endcomment %}
+  {% if site.kind == "lesson" and site.locale %}
+        <li class="dropdown">
+          <a href="{{ page.root }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            <span class="glyphicon glyphicon-globe" aria-hidden="true"></span>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            {% assign current_page = page.path | split: "/" | last %}
+            {% if page.path contains "locale" %}
+              {% comment %} Check whether the page is a root page {% endcomment %}
+              {% assign allpages = site.pages | map: "path" %}
+              {% if allpages contains current_page %}
+                {% assign path_current = site.pages | where_exp: "spage", "spage.path contains current_page" | map: "url" %}
+                {% assign path_word = current_page | replace: ".md", "" %}
+                <li><a href="{{ path_current }}">en: {{ include.language_en[path_word] }}</a>
+              {% else %}
+                {% comment %} Looking for episodes {% endcomment %}
+                {% for episode in site.episodes %}
+                  {% capture original_episode %}{{ episode.path | split: "/" | last }}{% endcapture %}
+                  {% if original_episode == current_page %}
+                <li><a href="{{ episode.url }}">en: {{ episode.title }}</a>
+                  {% endif %}
+                {% endfor %}
+                {% comment %} Looking for extras {% endcomment %}
+                {% for extra in site.extras %}
+                  {% capture original_extra %}{{ extra.path | split: "/" | last }}{% endcapture %}
+                  {% if original_extra == current_page %}
+                <li><a href="{{ extra.url }}">en: {{ extra.title }}</a>
+                  {% endif %}
+                {% endfor %}
+              {% endif %}
+            {% endif %}
+            {% comment %} Generate the links for the other possible translations {% endcomment %}
+            {% for translated_page in site.locale %}
+              {% if translated_page.path != page.path %} {% comment %} to skip the current page {% endcomment %}
+                {% assign langfilename = translated_page.path | split: "/" | last %}
+                {% assign thislanguage = translated_page.path | remove: "_locale/" | split: "/" | first %}
+                {% if page.path contains langfilename %} {% comment %} So it's the translation of the page {% endcomment %}
+                <li><a href="{{ translated_page.url }}">{{ thislanguage }}: {{ translated_page.title}}</a></li>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
+  {% endif %}
+
       </ul>
       <form class="navbar-form navbar-right" role="search" id="search" onsubmit="google_search(); return false;">
         <div class="form-group">
-          <input type="text" id="google-search" placeholder="Search..." aria-label="Google site search">
+          <input type="text" id="google-search" placeholder="{{ include.language.search }}..." aria-label="Google site search">
         </div>
       </form>
     </div>

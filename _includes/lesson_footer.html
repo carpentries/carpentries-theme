@@ -19,19 +19,19 @@
       <h4>
 	{% if page.source %}
 	{% if page.source == "Rmd" %}
-	<a href="{{site.github.repository_url}}/edit/gh-pages/{{page.path|replace: "_episodes", "_episodes_rmd" | replace: ".md", ".Rmd"}}">Edit on GitHub</a>
+	<a href="{{site.github.repository_url}}/edit/gh-pages/{{page.path|replace: "_episodes", "_episodes_rmd" | replace: ".md", ".Rmd"}}">{{ include.language.edit }}</a>
 	{% endif %}
 	{% else %}
-	<a href="{{site.github.repository_url}}/edit/gh-pages/{{page.path}}">Edit on GitHub</a>
+	<a href="{{site.github.repository_url}}/edit/gh-pages/{{page.path}}">{{ include.language.edit }}</a>
 	{% endif %}
 	/
-	<a href="{{ site.github.repository_url }}/blob/gh-pages/CONTRIBUTING.md">Contributing</a>
+	<a href="{{ site.github.repository_url }}/blob/gh-pages/CONTRIBUTING.md">{{ include.language.contribute }}</a>
 	/
-	<a href="{{ site.github.repository_url }}/">Source</a>
+	<a href="{{ site.github.repository_url }}/">{{ include.language.source }}</a>
 	/
-	<a href="{{ site.github.repository_url }}/blob/gh-pages/CITATION">Cite</a>
+	<a href="{{ site.github.repository_url }}/blob/gh-pages/CITATION">{{ include.language.cite }}</a><!-- FIXME: cite the lesson or the translation? -->
 	/
-	<a href="mailto:{{ site.email }}">Contact</a>
+	<a href="mailto:{{ site.email }}">{{ include.language.contact }}</a>
       </h4>
     </div>
   </div>

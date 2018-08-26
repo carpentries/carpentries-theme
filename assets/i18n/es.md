@@ -1,10 +1,10 @@
 ---
-home: Inicio
-CoC: Codigo de Conducta
+index: Inicio
+CoC: Código de Conducta
 setup: Configuración
 episodes: Episodes
 extras: Extras
-license: Licencia
+LICENSE: Licencia
 improve: Mejora esta página
 reference: Referencias
 aio: Todo en uno

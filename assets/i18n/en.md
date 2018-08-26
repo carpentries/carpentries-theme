@@ -1,10 +1,10 @@
 ---
-home: "Home"
+index: "Home"
 CoC: "Code of Conduct"
 setup:  "Setup"
 episodes: "Episodes"
 extras: "Extras"
-license: "License"
+LICENSE: "License"
 improve: "Improve this page"
 reference: "Reference"
 aio: "All in One"
