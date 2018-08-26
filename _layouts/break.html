@@ -1,10 +1,23 @@
 ---
 layout: base
 ---
-{% include episode_navbar.html episode_navbar_title=true %}
+{% comment %}
+In which language is the current page? Guess from the path: locale="/<lang>/".
+Load language tockens for menus {{ data_language }}. Translations need to provide a lang.md file that translates what's under _data/language.yaml
+Generate list of episodes and extras for the language shown. - NOTE: _extras need in the permlinks /<language>/page!!
+{% endcomment %}
+{% if page.path contains "_locale" %}
+    {% assign locale = page.path | remove: "_locale/" | split: "/" | first | downcase %}
+{% else %}
+    {% assign locale = "en" %}
+{% endif %}
+{% assign lang_file = locale | append: '.md' %}
+{% assign data_language = site.pages | where_exp:"page", "page.path contains 'i18n'" | where_exp:"page", "page.path contains lang_file" | first %}
+{% comment %} Start of page {% endcomment %}
+{% include episode_navbar.html episode_navbar_title=true language=data_language %}
 <article>
 {% include episode_title.html %}
-{% include episode_break.html %}
+{% include episode_break.html  language=data_language %}
 {{content}}
 </article>
-{% include episode_navbar.html episode_navbar_title=false %}
+{% include episode_navbar.html episode_navbar_title=false language=data_language %}
