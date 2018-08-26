@@ -2,7 +2,7 @@
 index: Inicio
 CoC: Código de Conducta
 setup: Configuración
-episodes: Episodes
+episodes: Episodios
 extras: Extras
 LICENSE: Licencia
 improve: Mejora esta página
