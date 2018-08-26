@@ -1,9 +1,9 @@
 {% comment %}
   Display key points of all episodes for reference.
 {% endcomment %}
-<h2>Key Points</h2>
+<h2>{{ include.language.keypoints }}</h2>
 <table class="table table-striped">
-{% for episode in site.episodes %}
+{% for episode in include.episodes %}
   {% unless episode.break %}
     <tr>
       <td class="col-md-3">
