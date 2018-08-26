@@ -14,15 +14,15 @@
       {% comment %} Select what logo to display. {% endcomment %}
       {% if page.carpentry == "swc" %}
       <a href="{{ site.swc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ page.root }}/assets/img/swc-icon-blue.svg" alt="Software Carpentry logo" />
+        <img class="navbar-logo" src="{{ '/assets/img/swc-icon-blue.svg' | absolute_url }}" alt="Software Carpentry logo" />
       </a>
       {% elsif page.carpentry == "dc" %}
       <a href="{{ site.dc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ page.root }}/assets/img/dc-icon-black.svg" alt="Data Carpentry logo" />
+        <img class="navbar-logo" src="{{ '/assets/img/dc-icon-black.svg' | absolute_url }}" alt="Data Carpentry logo" />
       </a>
       {% elsif page.carpentry == "lc" %}
       <a href="{{ site.lc_site }}" class="pull-left">
-        <img class="navbar-logo" src="{{ page.root }}/assets/img/lc-icon-black.png" alt="Library Carpentry logo" />
+        <img class="navbar-logo" src="{{ '/assets/img/lc-icon-black.png' | absolute_url }}" alt="Library Carpentry logo" />
       </a>
       {% endif %}
 
