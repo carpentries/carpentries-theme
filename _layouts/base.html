@@ -12,6 +12,7 @@ Generate list of episodes and extras for the language shown. - NOTE: _extras nee
     {% assign extras = site.locale | where_exp:"item", "item.path contains pathLocale" | where_exp:"item", "item.path contains 'extra'" | sort: "path"  %}
 {% else %}
     {% assign locale = "en" %}
+    {% assign pathLocale = "" %}
     {% assign episodes = site.episodes %}
     {% assign extras = site.extras %}
 {% endif %}
@@ -48,7 +49,7 @@ Generate list of episodes and extras for the language shown. - NOTE: _extras nee
   </head>
   <body>
     <div class="container">
-      {% include navbar.html language=data_language language_en=data_language_en episodes=episodes extras=extras locale=locale %}
+      {% include navbar.html language=data_language language_en=data_language_en episodes=episodes extras=extras locale=locale pathLocale=pathLocale %}
 {{ content }}
       {% if site.kind == "workshop" %}
       {% include workshop_footer.html %}
