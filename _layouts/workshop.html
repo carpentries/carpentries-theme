@@ -1,7 +1,25 @@
 ---
 ---
+{% comment %}
+In which language is the current page? Guess from the path: locale="/<lang>/".
+Load language tockens for menus {{ data_language }}. Translations need to provide a lang.md file that translates what's under _data/language.yaml
+Generate list of episodes and extras for the language shown. - NOTE: _extras need in the permlinks /<language>/page!!
+{% endcomment %}
+{% if page.path contains "_locale" %}
+    {% assign locale = page.path | remove: "_locale/" | split: "/" | first | downcase %}
+    {% assign pathLocale = locale | append: '/' | prepend: '/' %}
+    {% assign episodes = site.locale | where_exp:"item", "item.path contains pathLocale" | where_exp:"item", "item.path contains 'episode'" | sort: "path"  %}
+    {% assign extras = site.locale | where_exp:"item", "item.path contains pathLocale" | where_exp:"item", "item.path contains 'extra'" | sort: "path"  %}
+{% else %}
+    {% assign locale = "en" %}
+    {% assign episodes = site.episodes %}
+    {% assign extras = site.extras %}
+{% endif %}
+{% assign lang_file = locale | append: '.md' %}
+{% assign data_language = site.pages | where_exp:"page", "page.path contains 'i18n'" | where_exp:"page", "page.path contains lang_file" | first %}
+{% assign data_language_en = site.pages | where_exp:"page", "page.path contains 'i18n'" | where_exp:"page", "page.path contains 'en.md'" | first %}
 <!doctype html>
-<html lang="en">
+<html lang="{{ locale }}">
   <head>
 
     <meta name="slug" content="{{site.github.project_title}}" />
@@ -45,10 +63,10 @@
   </head>
   <body>
     <div class="container">
-      {% include navbar.html %}
-      {% include workshop_ad.html %}
+      {% include navbar.html language=data_language language_en=data_language_en episodes=episodes extras=extras locale=locale %}
+      {% include workshop_ad.html language=data_language %}
 {{ content }}
-      {% include workshop_footer.html %}
+      {% include workshop_footer.html language=data_language %}
     </div>
     {% include javascript.html %}
   </body>

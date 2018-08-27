@@ -30,4 +30,7 @@ objectives: Objectivos
 downloadLesson: "Descarga los ficheros necesarios para la lección"
 finish: "Fin"
 scheduleDisclaimer: El horario durante la lección puede variar a según los temas y preguntas que eliga el instructor.
+instructors: "Instructores"
+helpers: "Ayudantes"
+tba: "Aún pendiente"
 ---

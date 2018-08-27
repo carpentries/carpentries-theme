@@ -30,4 +30,7 @@ objectives: "Objectives"
 downloadLesson: "Download files required for the lesson"
 finish: "Finish"
 scheduleDisclaimer: "The actual schedule may vary slightly depending on the topics and exercises chosen by the instructor."
+instructors: "Instructors"
+helpers: "Helpers"
+tba: "to be announced"
 ---
