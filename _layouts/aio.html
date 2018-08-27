@@ -1,0 +1,51 @@
+---
+layout: base
+---
+{% comment %}
+In which language is the current page? Guess from the path: locale="/<lang>/".
+Load language tockens for menus {{ data_language }}. Translations need to provide a lang.md file that translates what's under _data/language.yaml
+Generate list of episodes and extras for the language shown. - NOTE: _extras need in the permlinks /<language>/page!!
+{% endcomment %}
+{% if page.path contains "_locale" %}
+    {% assign locale = page.path | remove: "_locale/" | split: "/" | first | downcase %}
+    {% assign pathLocale = locale | append: '/' | prepend: '/' %}
+    {% assign episodes = site.locale | where_exp:"item", "item.path contains pathLocale" | where_exp:"item", "item.path contains 'episode'" | sort: "path"  %}
+{% else %}
+    {% assign locale = "en" %}
+    {% assign episodes = site.episodes %}
+{% endif %}
+{% assign lang_file = locale | append: '.md' %}
+{% assign data_language = site.pages | where_exp:"page", "page.path contains 'i18n'" | where_exp:"page", "page.path contains lang_file" | first %}
+{% include main_title.html %}
+<script>
+ window.onload = function() {
+     var lesson_episodes = [
+         {% for episode in episodes %}
+         "{{ episode.url | absolute_url }}"{% unless forloop.last %},{% endunless %}
+         {% endfor %}
+     ];
+     var xmlHttp = [];  /* Required since we are going to query every episode. */
+     for (i=0; i < lesson_episodes.length; i++) {
+         xmlHttp[i] = new XMLHttpRequest();
+         xmlHttp[i].episode = lesson_episodes[i];  /* To enable use this later. */
+         xmlHttp[i].onreadystatechange = function() {
+             if (this.readyState == 4 && this.status == 200) {
+                 var article_here = document.getElementById(this.episode);
+                 var parser = new DOMParser();
+                 var htmlDoc = parser.parseFromString(this.responseText,"text/html");
+                 var htmlDocArticle = htmlDoc.getElementsByTagName("article")[0];
+                 article_here.innerHTML = htmlDocArticle.innerHTML;
+             }
+         }
+         episode_url = lesson_episodes[i];
+         xmlHttp[i].open("GET", episode_url);
+         xmlHttp[i].send(null);
+     }
+ }
+</script>
+{% comment %}
+Create anchor for each one of the episodes.
+{% endcomment %}
+{% for episode in episodes %}
+    <article id="{{ episode.url }}"></article>
+{% endfor %}
