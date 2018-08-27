@@ -95,7 +95,7 @@
               {% comment %} Check whether the page is a root page {% endcomment %}
               {% assign allpages = site.pages | map: "path" %}
               {% if allpages contains current_page %}
-                {% assign path_current_original = site.pages | where_exp: "spage", "spage.path contains current_page" | map: "url" %}
+                {% assign path_current_original = site.pages | where_exp: "spage", "spage.path contains current_page" | map: "url" | first %}
                 {% assign path_word = current_page | replace: ".md", "" %}
                 <li><a href="{{ path_current_original | absolute_url }}">en: {{ include.language_en[path_word] }}</a>
               {% else %}
