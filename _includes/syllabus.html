@@ -17,7 +17,8 @@
   <tr>
     {% if multiday %}<td class="col-md-1"></td>{% endif %}
     <td class="{% if multiday %}col-md-1{% else %}col-md-2{% endif %}"></td>
-    <td class="col-md-3"><a href="{{ page.root }}{% link setup.md %}">{{ include.language.setup }}</a></td>
+    {% assign setupurl = include.pathLocale | append: "setup/" | absolute_url %}
+    <td class="col-md-3"><a href="{{ setupurl }}">{{ include.language.setup }}</a></td>
     <td class="col-md-7">{{ include.language.downloadLesson }}</td>
   </tr>
   {% for episode in include.episodes %}
@@ -42,7 +43,7 @@
       <td class="{% if multiday %}col-md-1{% else %}col-md-2{% endif %}">{% if hours < 10 %}0{% endif %}{{ hours }}:{% if minutes < 10 %}0{% endif %}{{ minutes }}</td>
       <td class="col-md-3">
         {% assign lesson_number = lesson_number | plus: 1 %}
-	{{ lesson_number }}. <a href="{{ page.root }}{{ episode.url }}">{{ episode.title }}</a>
+	{{ lesson_number }}. <a href="{{ episode.url | absolute_url }}">{{ episode.title }}</a>
       </td>
       <td class="col-md-7">
         {% if episode.break %}
