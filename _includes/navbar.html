@@ -48,7 +48,7 @@
           <a href="{{ page.root }}/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ include.language.episodes }} <span class="caret"></span></a>
           <ul class="dropdown-menu">
             {% for episode in episodes %}
-            <li><a href="{{ episode.url }}">{{ episode.title }}</a></li><!-- NOTE: Check whether this works on github where root is different than localhost; also for extras and others. -->
+            <li><a href="{{ episode.url | absolute_url }}">{{ episode.title }}</a></li><!-- NOTE: Check whether this works on github where root is different than localhost; also for extras and others. -->
             {% endfor %}
 	    <li role="separator" class="divider"></li>
             {% assign aiourl = include.pathLocale | append: "aio/" | absolute_url %}
@@ -65,7 +65,7 @@
             {% assign referenceurl = include.pathLocale | append: "reference/" | absolute_url %}
             <li><a href="{{ referenceurl }}">{{ include.language.reference }}</a></li>
             {% for extra in extras %}
-            <li><a href="{{ extra.url }}">{{ extra.title }}</a></li>
+            <li><a href="{{ extra.url | absolute_url }}">{{ extra.title }}</a></li>
             {% endfor %}
           </ul>
         </li>
@@ -97,20 +97,20 @@
               {% if allpages contains current_page %}
                 {% assign path_current_original = site.pages | where_exp: "spage", "spage.path contains current_page" | map: "url" %}
                 {% assign path_word = current_page | replace: ".md", "" %}
-                <li><a href="{{ path_current_original }}">en: {{ include.language_en[path_word] }}</a>
+                <li><a href="{{ path_current_original | absolute_url }}">en: {{ include.language_en[path_word] }}</a>
               {% else %}
                 {% comment %} Looking for episodes {% endcomment %}
                 {% for episode in site.episodes %}
                   {% capture original_episode %}{{ episode.path | split: "/" | last }}{% endcapture %}
                   {% if original_episode == current_page %}
-                <li><a href="{{ episode.url }}">en: {{ episode.title }}</a>
+                <li><a href="{{ episode.url | absolute_url }}">en: {{ episode.title }}</a>
                   {% endif %}
                 {% endfor %}
                 {% comment %} Looking for extras {% endcomment %}
                 {% for extra in site.extras %}
                   {% capture original_extra %}{{ extra.path | split: "/" | last }}{% endcapture %}
                   {% if original_extra == current_page %}
-                <li><a href="{{ extra.url }}">en: {{ extra.title }}</a>
+                <li><a href="{{ extra.url | absolute_url }}">en: {{ extra.title }}</a>
                   {% endif %}
                 {% endfor %}
               {% endif %}
@@ -121,7 +121,7 @@
                 {% assign langfilename = translated_page.path | split: "/" | last %}
                 {% assign thislanguage = translated_page.path | remove: "_locale/" | split: "/" | first %}
                 {% if page.path contains langfilename %} {% comment %} So it's the translation of the page {% endcomment %}
-                <li><a href="{{ translated_page.url }}">{{ thislanguage }}: {{ translated_page.title}}</a></li>
+                <li><a href="{{ translated_page.url | absolute_url }}">{{ thislanguage }}: {{ translated_page.title}}</a></li>
                 {% endif %}
               {% endif %}
             {% endfor %}
