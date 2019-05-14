@@ -5,6 +5,7 @@
 {% include gh_variables.html %}
 
 <footer>
+  <hr/>
   <div class="row">
     <div class="col-md-6 copyright" align="left">
 	{% if site.carpentry == "swc" %}
@@ -47,7 +48,9 @@
   </div>
   <div class="row">
     <div class="col-md-12" align="center">
-      Using <a href="https://github.com/carpentries/carpentries-theme/">The Carpentries theme</a> &mdash; Site last built on: {{ site.time }}.
+      <p class="text-muted">
+        <small> Using <a href="https://github.com/carpentries/carpentries-theme/">The Carpentries theme</a> &mdash; Site last built on: {{ site.time }}.</small>
+      </p>
     </div>
   </div>
 </footer>
