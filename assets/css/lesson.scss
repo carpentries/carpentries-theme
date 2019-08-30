@@ -167,6 +167,9 @@ blockquote p {
     margin: 5px;
     font-size: 16px;
 }
+blockquote :not(h2) + p {
+    padding-top: 1em;
+}
 
 //----------------------------------------
 // Override Bootstrap settings.
