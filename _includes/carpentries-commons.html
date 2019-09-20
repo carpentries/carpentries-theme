@@ -14,10 +14,17 @@ We have no notice for official lessons
 
 {% elsif site.carpentry == "lab" %}
 
+{% comment %}
+Should we add a notice for Carpentries Lab?
+{% endcomment %}
 
 {% else %}
 
+<div class="alert alert-danger text-center" role="alert">
+  Invalid value for variable <code>carpentry</code> defined in
+  <code>_config.yml</code>. Current value: <code>{{ site.carpentry }}</code>
+  allowed values: ("swc", "dc", "lc", "cp", "incubator", "lab")
+</div>
 
-{% endif %}
 
 {% endif %}
