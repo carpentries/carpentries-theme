@@ -1,0 +1,23 @@
+{% if site.carpentry == "swc" or site.carpentry == "dc" or
+   site.carpentry == "lc" or site.carpentry == "cp" %}
+
+{% comment %}
+We have no notice for official lessons
+{% endcomment %}
+
+{% elsif site.carpentry == "incubator" %}
+
+<div class="alert alert-info text-center" role="alert">
+  This lesson is part of [The Carpentries Incubator](https://github.com/carpentries-incubator/proposals/#the-carpentries-incubator).
+  It is a resource for people to share and use each other's Carpentries-style lessons. <strong>The materials provided in this GitHub organization have not been reviewed by and are not endorsed by The Carpentries</strong>.
+</div>
+
+{% elsif site.carpentry == "lab" %}
+
+
+{% else %}
+
+
+{% endif %}
+
+{% endif %}
