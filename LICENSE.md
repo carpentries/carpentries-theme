@@ -25,7 +25,7 @@ Under the following terms:
 
 * **Attribution** --- You must give appropriate credit (mentioning that your
   work is derived from this lesson, provide a link to it <{{ site.url }}>, and
-  if it is an official lesson, to the relevant lesson program (i.e.,
+  for official lessons to the relevant lesson program (i.e.,
   <https://software-carpentry.org >, <https://datacarpentry.org>, or
   <https://librarycarpentry.org>), provide a [link to the license][cc-by-human],
   and indicate if changes were made. You may do so in any reasonable manner, but
