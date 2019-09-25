@@ -32,12 +32,14 @@
 
   </head>
   <body>
-
     {% include life_cycle.html %}
 
     <div class="container">
       {% include navbar.html %}
-{{ content }}
+      {% include carpentries-commons.html %}
+
+      {{ content }}
+
       {% if site.kind == "workshop" %}
       {% include workshop_footer.html %}
       {% else %}
