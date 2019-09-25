@@ -29,7 +29,7 @@ Under the following terms:
   for official lessons to the relevant lesson program (i.e.,
   <https://software-carpentry.org >, <https://datacarpentry.org>, or
   <https://librarycarpentry.org>), provide a [link to the license][cc-by-human],
-  and indicate if changes were made. You may do so in any reasonable manner, but
+  and indicate if changes were made). You may do so in any reasonable manner, but
   not in any way that suggests the licensor endorses you or your use.
 
 **No additional restrictions** --- You may not apply legal terms or
