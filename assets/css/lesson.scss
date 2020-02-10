@@ -24,6 +24,7 @@ $color-brand:       #2b3990 !default;
 
 // code boxes
 $color-error:       #bd2c00 !default;
+$color-warning:     #cda01d !default;
 $color-output:      #303030 !default;
 $color-source:      #360084 !default;
 
@@ -50,6 +51,7 @@ $color-testimonial: #fc8dc1 !default;
     margin: 15px 5px 10px 0;
     border-radius: 4px 0 0 4px;
 }
+
 
 // Generic setup. Has to come before .error, .warning, and .output
 div[class^='language-'] { @include cdSetup($color-source); }
