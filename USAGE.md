@@ -8,17 +8,19 @@ This repository provides a remote Jekyll theme for use with The Carpentries.
 
 Many lessons built for The Carpentries carry around the website theme assets
 such as CSS and favicons. These things evolve, but keeping a given lesson
-synchronized with upstream repositories (such as [styles](
-https://github.com/carpentries/styles) and [lesson-example](
-https://github.com/carpentries/lesson-example)) is laborious and error-prone.
-This project provides an alternative for those who do not need to customize
-the theme or do not wish to carry the code around as part of their repository.
+synchronized with the upstream [styles](https://github.com/carpentries/styles)
+repository, as well as the "best practice" [lesson-example](
+https://github.com/carpentries/lesson-example) repo, is laborious and
+error-prone. This project provides an alternative for those who do not need to
+customize the theme or do not wish to carry the code around as part of their
+repository.
 
 ## Installation
 
-The goal is to help you carry around less code, not more. It is recommended that
-you carry out the process of trimming down on your local machine, in a separate
-branch, so you can easily get back if things don't go to plan:
+The goal is to help you carry around less code, not more. This is accomplished
+using [bundler](https://bundler.io/) and Jekyll remote themes. It is recommended
+that you carry out the process of trimming down on your local machine, in a
+separate branch, so you can easily get back if things don't go to plan:
 
 ```bash
 $ git checkout -b install_carpentries-theme
@@ -45,7 +47,8 @@ files, if they exist; otherwise, the lesson will fail to build.
 - `figure.html`
 
 Next, please synchronize the following items with the current versions in
-The Carpentries [styles](https://github.com/carpentries/styles) repository.
+The Carpentries [styles](https://github.com/carpentries/styles) repository
+&ndash; retaining your local edits!
 
 - Folders
   - `.github/`
@@ -56,11 +59,20 @@ The Carpentries [styles](https://github.com/carpentries/styles) repository.
   - `Gemfile`
   - `LICENSE.md`
   - `Makefile`
-  - `_config.yml` &ndash; retaining your local edits!
+  - `_config.yml`
+  - `.travis.yml`
   - `aio.md`
 
-Finally, synchronize `.travis.yml` against the latest version in The Carpentries
-[lesson-example](https://github.com/carpentries/lesson-example). If you have not
-already configured Travis-CI to test your pull requests and code before
-deploying, please do so by visiting
-<https://travis-ci.org/github_user_name/repository_name>.
+> *Note:* If you have not already configured Travis-CI to test your pull
+> requests and code before deploying, please do so by visiting
+> <https://travis-ci.org/github_user_name/repository_name>.
+
+Finally, build your local site using the remote theme:
+
+```bash
+$ bundle install
+$ bundle exec jekyll serve
+```
+
+Check that everything looks correct, and that Jekyll throws no errors &ndash;
+then push your branch and file a pull request!
