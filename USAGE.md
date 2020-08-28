@@ -9,11 +9,11 @@ This repository provides a remote Jekyll theme for use with The Carpentries.
 Many lessons built for The Carpentries carry around the website theme assets
 such as CSS and favicons. These things evolve, but keeping a given lesson
 synchronized with the upstream [styles](https://github.com/carpentries/styles)
-repository, as well as the "best practice" [lesson-example](
-https://github.com/carpentries/lesson-example) repo, is laborious and
-error-prone. This project provides an alternative for those who do not need to
-customize the theme or do not wish to carry the code around as part of their
-repository.
+repository, as well as the "best practice"
+[lesson-example](https://github.com/carpentries/lesson-example) repo,
+is laborious and error-prone. This project provides an alternative for those
+who do not need to customize the theme or do not wish to carry the code around
+as part of their repository.
 
 ## Installation
 
