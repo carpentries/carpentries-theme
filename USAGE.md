@@ -67,7 +67,15 @@ The Carpentries [styles](https://github.com/carpentries/styles) repository
 > requests and code before deploying, please do so by visiting
 > <https://travis-ci.org/github_user_name/repository_name>.
 
-Finally, build your local site using the remote theme:
+Finally, build your local site using the remote theme.
+
+If you have GNU Make installed:
+
+```bash
+make serve
+```
+
+otherwise,
 
 ```bash
 $ bundle install
