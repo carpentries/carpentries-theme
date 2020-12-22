@@ -5,7 +5,7 @@ root: .
 ---
 ## Instructional Material
 
-This instructional material is
+All Software Carpentry, Data Carpentry, and Library Carpentry instructional material is
 made available under the [Creative Commons Attribution
 license][cc-by-human]. The following is a human-readable summary of
 (and not a substitute for) the [full legal text of the CC BY 4.0
@@ -24,7 +24,7 @@ license terms.
 Under the following terms:
 
 * **Attribution** --- You must give appropriate credit (mentioning that your
-  work is derived from this lesson, provide a link to it 
+  work is derived from this lesson, provide a link to it
   (<{{ site.url }}>), and
   for official lessons to the relevant lesson program (i.e.,
   <https://software-carpentry.org >, <https://datacarpentry.org>, or
@@ -43,7 +43,7 @@ Under the following terms:
   permissions necessary for your intended use. For example, other
   rights such as publicity, privacy, or moral rights may limit how you
   use the material.
-        
+
 ## Software
 
 Except where otherwise noted, the example programs and other software
