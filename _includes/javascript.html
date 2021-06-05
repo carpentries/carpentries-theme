@@ -42,3 +42,14 @@ options={
 </script>
 <script src="{{ relative_root_path }}/assets/js/katex-auto-render.min.js" onload="renderMathInElement(document.body, options)"></script>
 {% endif %}
+
+{%- comment -%}
+AnchorJS: A JavaScript utility for adding deep anchor links
+https://github.com/bryanbraun/anchorjs
+https://cdn.jsdelivr.net/npm/anchor-js/anchor.min.js
+{%- endcomment -%}
+
+<script src="{{ relative_root_path }}/assets/js/anchor.min.js"></script>
+<script>
+    anchors.add();
+</script>
