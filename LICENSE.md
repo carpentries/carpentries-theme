@@ -23,14 +23,15 @@ license terms.
 
 Under the following terms:
 
-* **Attribution** --- You must give appropriate credit (mentioning that your
-  work is derived from this lesson, provide a link to it 
-  (<{{ site.url }}>), and
-  for official lessons to the relevant lesson program (i.e.,
-  <https://software-carpentry.org >, <https://datacarpentry.org>, or
-  <https://librarycarpentry.org>), provide a [link to the license][cc-by-human],
-  and indicate if changes were made). You may do so in any reasonable manner, but
-  not in any way that suggests the licensor endorses you or your use.
+* **Attribution**---You must give appropriate credit by:
+  - mentioning that your work is derived from work that is
+    Copyright © Software Carpentry, Data Carpentry, Library Carpentry,
+    or The Carpentries.
+  - where practical, linking to the respective lesson program website
+    (https://software-carpentry.org/, https://datacarpentry.org, https://librarycarpentry.org, or
+    https://carpentries.org), provide a [link to the license][cc-by-human]
+  - and indicate if changes were made. You may do so in any reasonable manner, but not in any way
+    that suggests the licensor endorses you or your use.
 
 **No additional restrictions** --- You may not apply legal terms or
   technological measures that legally restrict others from doing anything the
@@ -72,8 +73,8 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 ## Trademark
 
-"Software Carpentry" and "Data Carpentry" and their respective logos
-are registered trademarks of [Community Initiatives][CI].
+"The Carpentries", "Software Carpentry" and "Data Carpentry" and their respective logos are
+registered trademarks of [Community Initiatives][CI].
 
 [cc-by-human]: https://creativecommons.org/licenses/by/4.0/
 [cc-by-legal]: https://creativecommons.org/licenses/by/4.0/legalcode
