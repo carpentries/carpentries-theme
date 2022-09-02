@@ -22,6 +22,9 @@
 <div class="panel panel-default life-cycle">
   <div id="life-cycle" class="panel-body beta">
     This lesson is being piloted (Beta version)
+    {% if site.carpentry == "incubator" %}
+    <br> <strong><a href="https://github.com/{{ site.repository }}/issues">If you teach this lesson, please tell the authors and provide feedback by opening an issue in the source repository</a></strong>
+    {% endif %}
   </div>
 </div>
 
